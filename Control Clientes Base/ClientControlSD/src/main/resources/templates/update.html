@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<html>
+    <head>
+        <title>Datos de la persona</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <a th:href = "@{/list}">Regresar</a>
+        <h1>Datos de la persona</h1>
+          	<form th:action="@{/save}" method="post" th:object="${persona}"><!--SE RECUPERA EL OBJETO DE LA MEMORIA(SI VIENE DEL INSERT ES VACIO, DE LO CONTRARIO ES UNO EXISTENTE) -->
+				<input type="hidden" name="id_persona" th:field="*{id_persona}"/>
+	            <br/>
+	            <label for="nombre">Nombre:</label>
+	            <input type="text" name="nombre" th:field="*{nombre}"/>
+	            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error nombre</span>
+	            <br/>
+	            <label for="apellido">Apellido:</label>
+	            <input type="text" name="apellido" th:field="*{apellido}"/>
+	            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error apellido</span>
+	            <br/>
+	            <label for="email">Email:</label>
+	            <input type="text" name="email" th:field="*{email}"/>
+	            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</span>
+	            <br/>
+	            <label for="telefono">Telefono:</label>
+	            <input type="tel" name="telefono" th:field="*{telefono}"/>
+	            <br/>
+	            <input type="submit" name="guardar" value="Guardar"/>
+        	</form>
+    </body>
+</html>
